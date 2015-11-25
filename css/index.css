@@ -1,0 +1,83 @@
+@font-face {
+    font-family: 'actionFace';
+
+    src: url('../fonts/glyphicons-halflings-regular.eot');
+    src: url('../fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/glyphicons-halflings-regular.woff2') format('woff2'),
+    url('../fonts/glyphicons-halflings-regular.woff') format('woff'),
+    url('../fonts/glyphicons-halflings-regular.ttf') format('truetype'),
+    url('../fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
+}
+/** reset start **/
+html,body,h1,h2,h3,h4,h5,p,div,ul,ol,dl,dt,dd,form,table,input,textarea,select{ margin:0; padding:0;
+    font-family: 'actionFace';font-size: 1rem; }
+
+li{ list-style: none;}
+img{ border:none; vertical-align: top;}
+a{ text-decoration: none; color: black;}
+input,textarea{ outline:none;}
+
+/** reset end **/
+
+/** public style start **/
+.fl{ float:left;}
+.fr{ float:right;}
+.clear{ zoom:1;}
+.clear:after{ display:block; clear:both; content:'';}
+/** public style end **/
+
+/** wrap start **/
+.wrap{ width:100%; height:100%; position:relative;}
+
+/** header start **/
+#header{ width:100%; height:5rem; background:white;}
+#header .headMain{ width: 1170px; height:100%; margin:0 auto; position:relative;}
+.headMain>a{ display:inline-block; width:188px; height:31px; background:url("../images/logo.png") no-repeat; margin-top:35px; cursor:pointer;}
+.headMain>nav{ display:block; margin-top:46px;  height:30px; line-height:30px;font-size:0;}
+.headMain>nav a{ display:inline-block; font-size:1rem; text-align:center; margin-left:40px; position:relative; left:0; top:0;  }
+.headMain>nav a span{ display:block;
+    -webkit-transition: width .8s;
+    -moz-transition: width .8s;
+    -ms-transition: width .8s;
+    -o-transition: width .8s;
+    transition: width .8s;}
+.headMain>nav a span:nth-of-type(2){ position:absolute; left:0px; top:0; color:red; overflow:hidden; width:0%;}
+.headMain>nav a:hover span:nth-of-type(2),.headMain>nav a.active span:nth-of-type(2){ width:100%;}
+.headMain>.arrow{ width:21px; height:11px; position:absolute; top: 5rem; left:50%; background:url("../images/menuIndicator.png") no-repeat;z-index:10;
+    -webkit-transition: left 1s;
+    -moz-transition: left 1s;
+    -ms-transition: left 1s;
+    -o-transition: left 1s;
+    transition: left 1s;}
+/** header end **/
+/** content start **/
+#content{ width:100%; position:relative; overflow:hidden;}
+#content .list{ width:100%; position:absolute; top:0; left:0;
+    -webkit-transition: top 1s;
+    -moz-transition: top 1s;
+    -ms-transition: top 1s;
+    -o-transition: top 1s;
+    transition: top 1s;
+}
+#content .list .liList{width:2000px; position:relative; left:50%; margin-left:-1000px; overflow:hidden;}
+#content .liList .show_ctx{ width:1170px; margin:0 auto; background:white; height:38.75rem; /* 620px;*/}
+
+/** home start **/
+#home{  background: url("../images/bg1.jpg") no-repeat}
+/** home end **/
+/** course start **/
+#course{  background: url("../images/bg3.jpg") no-repeat}
+/** course end **/
+/** works start **/
+#works{  background: url("../images/bg1.jpg") no-repeat}
+/** works end **/
+/** about start **/
+#about{  background: url("../images/bg5.jpg") no-repeat}
+/** about end **/
+/** team start **/
+#team{  background: url("../images/bg2.jpg") no-repeat}
+/** team end **/
+
+
+/** content end **/
+/** wrap end **/
