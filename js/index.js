@@ -10,7 +10,7 @@ window.onload = function(){
         oContent = $('content'),
         cUl = getByClass(oContent,'list')[0],
         cLi = getByClass(cUl,'liList'),
-        iNow = 0,
+        iNow = 2,
         iContentHeight = 0,
         cDiv = getByClass(cUl,'show_ctx');
 
@@ -35,7 +35,6 @@ window.onload = function(){
     function init(){
 
         oHeaderLeft = oHeadMain.offsetLeft;
-
         iContentHeight = (viewHeight() - oHeader.offsetHeight)/16;
         /** set id="content" height **/
         oContent.style.height = iContentHeight + 'rem';
@@ -47,17 +46,16 @@ window.onload = function(){
 
         divHeightAuto();
         arrowLeft();
+        startMove();
+        wheelScroll();
 
     }
 
     function arrowLeft(){
 
-        arrowMove(oNavA[iNow]);
         for(var i= 0,len=oNavA.length;i<len;i++){
-
             oNavA[i].index = i;
             oNavA[i].onclick = function(){
-
                 for(var j= 0;j<len;j++){
                     oNavA[j].className = '';
                 }
@@ -68,12 +66,78 @@ window.onload = function(){
         }
     }
 
-    function arrowMove(obj){
+    function startMove(){
+        arrowMove(oNavA[iNow]);
+        for(var j= 0,len=oNavA.length;j<len;j++){
+            oNavA[j].className = '';
+        }
 
+        oNavA[iNow].className = 'active';
+    }
+    /***
+     *
+     * @param obj
+     */
+    function arrowMove(obj){
         var defaultVal = obj.offsetWidth/2 - oArrow.offsetWidth/ 2,
             iLeft = getPosition(obj).left;
         oArrow.style.left = iLeft - oHeaderLeft + defaultVal + 'px';
         cUl.style.top = -(iNow*iContentHeight) + 'rem';
+    }
+
+
+    /**
+     *
+     */
+    function wheelScroll(){
+        /** ie and chrome
+                oContent.onmousewheel = function(){};
+
+            firefox  使用事件监听
+                oContent.addEventListener('DOMMouseScroll',fn,false);
+         */
+
+        var flag = true, /** true : down ; false : up */
+            timer = null;
+        if(oContent.addEventListener){
+            oContent.addEventListener('DOMMouseScroll',function(ev){
+                clearTimeout(timer);
+                ev = ev || window.event;
+                timer = setTimeout(function(){
+                    fn(ev);
+                },200);
+            },false);
+        }
+        oContent.onmousewheel = function(ev){
+            clearTimeout(timer);
+            ev = ev || window.event;
+            timer = setTimeout(function(){
+                fn(ev);
+            },200)
+        };
+
+        function fn(ev){
+
+            if(ev.wheelDelta){ /** chrome */
+                //console.info( ev.wheelDelta);
+                flag = ev.wheelDelta<0?true:false;
+            }else{
+                //console.info( ev.detail );
+                flag = ev.detail>0?true:false;
+            }
+
+            if(flag){
+                if(iNow < oNavA.length-1){
+                    iNow++;
+                }
+            }else{
+                if(iNow > 0){
+                    iNow--;
+                }
+            }
+
+            startMove();
+        }
     }
 
     /***
