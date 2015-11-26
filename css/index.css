@@ -36,11 +36,11 @@ input,textarea{ outline:none;}
 .headMain>nav{ display:block; margin-top:46px;  height:30px; line-height:30px;font-size:0;}
 .headMain>nav a{ display:inline-block; font-size:1rem; text-align:center; margin-left:40px; position:relative; left:0; top:0;  }
 .headMain>nav a span{ display:block;
-    -webkit-transition: width .8s;
-    -moz-transition: width .8s;
-    -ms-transition: width .8s;
-    -o-transition: width .8s;
-    transition: width .8s;}
+    -webkit-transition: width 1s;
+    -moz-transition: width 1s;
+    -ms-transition: width 1s;
+    -o-transition: width 1s;
+    transition: width 1s;}
 .headMain>nav a span:nth-of-type(2){ position:absolute; left:0px; top:0; color:red; overflow:hidden; width:0%;}
 .headMain>nav a:hover span:nth-of-type(2),.headMain>nav a.active span:nth-of-type(2){ width:100%;}
 .headMain>.arrow{ width:21px; height:11px; position:absolute; top: 5rem; left:50%; background:url("../images/menuIndicator.png") no-repeat;z-index:10;
@@ -60,7 +60,7 @@ input,textarea{ outline:none;}
     transition: top 1s;
 }
 #content .list .liList{width:2000px; position:relative; left:50%; margin-left:-1000px; overflow:hidden;}
-#content .liList .show_ctx{ width:1170px; margin:0 auto; background:white; height:38.75rem; /* 620px;*/}
+#content .liList .show_ctx{ width:1170px; margin:0 auto;/*background:white;*/ height:38.75rem; /* 620px;*/}
 
 /** home start **/
 #home{  background: url("../images/bg1.jpg") no-repeat}
