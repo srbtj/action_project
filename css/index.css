@@ -61,7 +61,9 @@ input,textarea{ outline:none;}
 }
 #content .list .liList{width:2000px; position:relative; left:50%; margin-left:-1000px; overflow:hidden;}
 #content .liList .show_ctx{ width:1170px; margin:0 auto;/*background:white;*/ height:38.75rem; /* 620px;*/ position:relative;}
-#content .liList .show_ctx h2{ font-size:80px; color:#009EE0; font-weight:bold; margin-left:50px; line-height:.7; letter-spacing: -5px; padding:100px 0 120px;}
+#content .liList .show_ctx h2{ font-size:80px; color:#009EE0; font-weight:bold; margin-left:50px; line-height:.8; letter-spacing: -5px; padding:100px 0 120px;}
+#content .show_ctx p{ width:400px; margin-left:50px; margin-top:-50px;}
+#content .show_ctx p span{ display:block; line-height:1;  color:white; text-indent:2em; word-break: keep-all;word-spacing: -5px;}
 
 /** home start **/
 #home{  background: url("../images/bg1.jpg") no-repeat}
@@ -122,8 +124,6 @@ input,textarea{ outline:none;}
 
 /** course start **/
 #course{  background: url("../images/bg3.jpg") no-repeat; position:relative;}
-#course .show_ctx p{ width:400px; margin-left:50px; margin-top:-50px;}
-#course .show_ctx p span{ display:block; line-height:1.5;  color:white; text-indent:2em; word-break: keep-all;word-spacing: -5px;}
 #course .show_ctx .div_right{ position:absolute; right:50px; top:120px; width:480px; -webkit-perspective: 800px; perspective: 800px; font-size:0;}
 #course .show_ctx .div_right div{ background:url("../images/plus_row.png") no-repeat; width:9px; height:412px; position:absolute; top:0;}
 #course .show_ctx .div_right .div_content{ width:120px; height:132px;background:none; position:relative; left:5px; top:0; margin-top:3px;display:inline-block; cursor:pointer;}
@@ -215,10 +215,27 @@ input,textarea{ outline:none;}
 }
 /** works end **/
 /** about start **/
-#about{  background: url("../images/bg5.jpg") no-repeat}
+#about{  background: url("../images/bg5.jpg") no-repeat;}
+#about .bg_line{width: 357px; height: 998px; background: url(../images/greenLine.png) no-repeat; position: absolute; left: 50%; top:0px;}
+#about .show_ctx div{ width:260px; height: 200px; position:absolute; border:5px solid white; border-radius:5px; overflow: hidden;}
+#about .show_ctx div:nth-of-type(1){ left:750px; top:90px;}
+#about .show_ctx div:nth-of-type(2){ left:580px; top:340px;}
+#about .show_ctx div ul{ position:absolute; width:100%; height:100%; z-index:3;}
+#about .show_ctx div span{ width:100%; height: 100%; position:absolute; top:0; left: 0; 
+    -webkit-transform: scale(1.5);
+    transform: scale(1.5);
+    -webkit-transition: .5s;
+    transition:.5s;
+
+}
+#about .show_ctx div:nth-of-type(1) span{ background: url(../images/about2.jpg) no-repeat;}
+#about .show_ctx div:nth-of-type(2) span{ background: url(../images/about4.jpg) no-repeat;}
+
+
+
 /** about end **/
 /** team start **/
-#team{  background: url("../images/bg2.jpg") no-repeat}
+#team{  background: url("../images/bg2.jpg") no-repeat;}
 /** team end **/
 
 
