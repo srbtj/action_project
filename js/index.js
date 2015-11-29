@@ -8,9 +8,15 @@ window.onload = function(){
         oNavA = oNav.getElementsByTagName('a'),
         oArrow = getByClass(oHeader,'arrow')[0],
         oContent = $('content'),
+        oHome = $('home'),
+        oUl = getByClass(oHome,'img_list')[0],
+        oImgUl = getByClass(oHome,'img_list')[0],
+        oImgLi = oImgUl.getElementsByTagName('li'),
+        oIndexUl = getByClass(oHome,'index_list')[0],
+        oIndexLi = oIndexUl.getElementsByTagName('li'),
         cUl = getByClass(oContent,'list')[0],
         cLi = getByClass(cUl,'liList'),
-        iNow = 2,
+        iNow = 1,
         iContentHeight = 0,
         cDiv = getByClass(cUl,'show_ctx');
 
@@ -48,7 +54,7 @@ window.onload = function(){
         arrowLeft();
         startMove();
         wheelScroll();
-
+        homeAnimation();
     }
 
     function arrowLeft(){
@@ -137,6 +143,58 @@ window.onload = function(){
             }
 
             startMove();
+        }
+    }
+
+    /*** home animation **/
+    function homeAnimation(){
+        var len = oIndexLi.length,
+            oldIndex = 0;
+        for(i=0;i<len;i++){
+            oIndexLi[i].index = i;
+            oIndexLi[i].onclick = function(){
+                if(oldIndex === this.index){
+                    return;
+                }
+                for(var i=0;i<len;i++){
+                    oIndexLi[i].className = '';
+                    oImgLi[i].className = '';
+                }
+                this.className = 'active';
+
+                if(oldIndex < this.index){
+                    oImgLi[oldIndex].className = 'leftHide';
+                    oImgLi[this.index].className = 'active rightShow';
+                }else{
+                    oImgLi[this.index].className = 'active leftShow';
+                    oImgLi[oldIndex].className = 'rightHide';
+                }
+                oldIndex = this.index;
+            }
+        }
+
+
+        var timer = null;
+        timer = setInterval(startAnimation,3000);
+
+        function startAnimation(){
+            var curIndex = oldIndex;
+            oldIndex++;
+            if(oldIndex === len){
+                oldIndex=0;
+            }
+            for(var i=0;i<len;i++){
+                oIndexLi[i].className = '';
+            }
+
+            oIndexLi[oldIndex].className = 'active';
+            oImgLi[curIndex].className = 'leftHide';
+            oImgLi[oldIndex].className = 'active rightShow';
+            curIndex = oldIndex;
+        }
+
+        oUl.onmouseover = function(){
+            clearInterval(timer);
         }
     }
 
