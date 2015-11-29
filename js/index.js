@@ -34,7 +34,11 @@ window.onload = function(){
 
         cLi = getByClass(cUl,'liList'),
 
-        iNow = 1,
+        oAbout = $('about'),
+
+        aUl = oAbout.getElementsByTagName('ul'),
+
+        iNow = 3,
 
         iContentHeight = 0,
 
@@ -111,6 +115,8 @@ window.onload = function(){
         wheelScroll();
 
         homeAnimation();
+
+        aboutAnimation();
 
     }
 
@@ -397,6 +403,74 @@ window.onload = function(){
     }
 
 
+    /** about animation ***/
+    function aboutAnimation(){
+
+        var len = aUl.length;
+
+        for(var i=0;i<len;i++){
+            changeImg(aUl[i],aUl[i].nextElementSibling);
+        }
+
+
+    }
+
+    function changeImg(ul,span){
+
+        var
+            width = ul.offsetWidth / 2,
+            height = ul.offsetHeight / 2;
+
+        var src = ul.dataset.src;
+
+        for(var j=0;j<4;j++){
+
+            var li = doc.createElement('li'),
+                img = doc.createElement('img');
+            li.style.width = width + 'px';
+            li.style.height = height + 'px';
+
+            img.src = src;
+            img.style.left = -j%2 * width + 'px';
+            img.style.top = -Math.floor(j/2) * height + 'px';
+
+            img.left = -j%2 * width;
+            img.top = -Math.floor(j/2) * height;
+
+            li.appendChild(img);
+            ul.appendChild(li);
+
+        }
+
+        var data = [
+            { name : 'top' , value : height },
+            { name : 'left' , value : - width*2 },
+            { name : 'left' , value : width },
+            { name : 'top' , value : - height*2 }
+        ];
+
+
+        var uImg = ul.getElementsByTagName('img'),
+            iLen = uImg.length;
+
+        ul.onmouseover = function(){
+
+            for(var i=0;i<iLen;i++){
+                uImg[i].style[data[i].name] = data[i].value + 'px';
+            }
+            span.style.webkitTransform = 'scale(1)';
+            span.style.transform = 'scale(1)';
+
+        }
+
+        ul.onmouseout = function(){
+            for(var i=0;i<iLen;i++){
+                uImg[i].style[data[i].name] = uImg[i][data[i].name] + 'px';
+            }
+            span.style.webkitTransform = 'scale(1.5)';
+            span.style.transform = 'scale(1.5)';
+        }
+    }
 
     /***
 
